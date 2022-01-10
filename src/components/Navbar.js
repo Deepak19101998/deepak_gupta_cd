@@ -1,3 +1,4 @@
+// This component is used to access the all componet via link
 import React from "react";
 import "../App.css";
 import { NavLink } from "react-router-dom";

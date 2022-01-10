@@ -22,6 +22,7 @@ const Building = () => {
   const [bedroom, setBedroom] = useState("");
   const [price, setPrice] = useState("");
   const [sortedProducts, setSortedProducts] = useState([]);
+  // getting the data of JSON file from redux state
   const state = useSelector(state => state.unitDataReducer)
 
   useEffect(() => {
@@ -56,6 +57,7 @@ const Building = () => {
 
   // console.log({ floor, grossm2, bedroom, price });
 
+  // clearing all the filters on single click
   const clearFilter = () => {
     setFloor("");
     setPrice("");
@@ -169,6 +171,7 @@ const Building = () => {
             <TableCell>BlockMap</TableCell>
             <TableCell>Apartment Id</TableCell>
           </TableRow>
+          {/* Showing the table content with filterdData */}
           {sortedProducts.map((item) => (
             <TableRow key={item.uniqueID}>
               <TableCell>{item.ID}</TableCell>
@@ -189,6 +192,7 @@ const Building = () => {
               <TableCell>{item.blockMap}</TableCell>
               <TableCell>{item.apartment_id}</TableCell>
               <TableCell>
+                {/* Redirecting to the Details component with nested router */}
                 <Link style={{textDecoration:'none'}} to={`${item.apartment_id}/detail`}>Details</Link>
               </TableCell>
             </TableRow>

@@ -4,6 +4,7 @@ import data from "../test_units_data.json";
 import { useParams } from "react-router-dom";
 
 const Details = () => {
+  // getting the id from useParams()
   const param = useParams();
   // console.log(param.id);
 
@@ -13,6 +14,7 @@ const Details = () => {
         Details Page
       </Box>
       <Grid container item xs={12} md={8} className="grid-container">
+        {/* comparing the apt_id with useParams() and showing the data on selected row from building page */}
         {data
           .filter((item) => param.id == item.apartment_id)
           .map((filteredData, index) => {

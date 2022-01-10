@@ -1,3 +1,4 @@
+// This component is used to show the message when the url is not exact same 
 import React from 'react'
 
 const NotFound = () => {
