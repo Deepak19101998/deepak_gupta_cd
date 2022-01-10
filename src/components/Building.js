@@ -200,7 +200,7 @@ const Building = () => {
               <TableCell>{item.blockMap}</TableCell>
               <TableCell>{item.apartment_id}</TableCell>
               <TableCell>
-                <Link style={{textDecoration:'none'}} to={`/${item.uniqueID}/detail`}>Details</Link>
+                <Link style={{textDecoration:'none'}} to={`/${item.apartment_id}/detail`}>Details</Link>
               </TableCell>
             </TableRow>
           ))}

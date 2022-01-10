@@ -97,7 +97,7 @@ const Information = ({ dropdownValue }) => {
       }
     }
 
-    return content;
+    return <div style={{lineHeight:2,width:'70%',margin:'auto'}}>{content}</div>;
   };
   return <div className="p-20">{renderContent()}</div>;
 };
