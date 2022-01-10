@@ -11,35 +11,25 @@ import {
   TableRow,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import options from "../test_fliter_options.json";
-import data from "../test_units_data.json";
 
 const Building = () => {
-  // const tesTableCellata = JSON.parse(data)
-  // console.log(data);
-
-  // console.log(tesTableCellata)
 
   const [floor, setFloor] = useState("");
   const [grossm2, setGrossm2] = useState("");
   const [bedroom, setBedroom] = useState("");
   const [price, setPrice] = useState("");
   const [sortedProducts, setSortedProducts] = useState([]);
-
-  // console.log({ data, options });
-
-  // 0
-  // 100
+  const state = useSelector(state => state.unitDataReducer)
 
   useEffect(() => {
     if (!floor && !bedroom && !price && !grossm2) {
-      console.log("It is Empty");
-      setSortedProducts(data);
+      setSortedProducts(state.data);
     } else {
-      console.log({ data });
 
-      const result = data.filter((product) => {
+      const result = state.data.filter((product) => {
         const floorText =
           floor !== "" ? product.floor.split(".")[0] === floor : true;
         const bedRoomText =
@@ -59,13 +49,12 @@ const Building = () => {
 
         return floorText && bedRoomText && groosm2Text && priceText;
       });
-      console.log({ result });
       setSortedProducts(result);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [floor, bedroom, price, grossm2, data]);
+  }, [floor, bedroom, price, grossm2, state.data]);
 
-  console.log({ floor, grossm2, bedroom, price });
+  // console.log({ floor, grossm2, bedroom, price });
 
   const clearFilter = () => {
     setFloor("");
@@ -200,7 +189,7 @@ const Building = () => {
               <TableCell>{item.blockMap}</TableCell>
               <TableCell>{item.apartment_id}</TableCell>
               <TableCell>
-                <Link style={{textDecoration:'none'}} to={`/${item.apartment_id}/detail`}>Details</Link>
+                <Link style={{textDecoration:'none'}} to={`${item.apartment_id}/detail`}>Details</Link>
               </TableCell>
             </TableRow>
           ))}
